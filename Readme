@@ -1,0 +1,62 @@
+* Creating the workspace for building the React Web Application using the command {npx create-react-app my-app}.
+
+* Moving into the Workspace using the command {cd my-app}.
+
+* Install all the necessary package {Component,ThreeDots,Redirect,Cookies,Popup,BrowserRouter,Route,Switch, Rating, Typography}.
+
+* First I was writting code in App.js file. Importing Switch,Route,BrowserRouter from "react-router-dom@5.2.0". These Components are used to render the exact component.
+
+* Inside Switch Component there was two components available for rendering one is LoginForm and the other one is Home.
+
+* LoginForm component is render when the url path is "/login".
+
+* Home Component is render when the url path is "/".
+
+* Next Moving to the LoginForm Component. It contains a heading named Login Form. After that an Form element is given for getting data from user.
+
+* The form element having 2 input elements one is  for getting username and the other one is for password. 
+
+* These two input elemts are controlled Input. The input value was handled by state object.
+
+* Both of the input elements having  having onChange event Listener. If any changes happens it will automatically update and store the value to the state by using the function updateUserName and updatePassword.
+
+* Whenever the event handler triggerd the event object created by default. The event.target.value contains the value in the input element dialogue box.
+
+* When the submit Event triggerd. The submitForm function called and HTTP request was made and return a Jwt Token on successful scenerio else return a error msg.
+
+* Then the Jwt Token is stored by the use {js-cookie} Cookies.set() method. The expiration time for jwt token is set as 30 days.
+
+* In the failure attempt the error msg and showSubmitError value is upadted on the state.
+
+* Once the showSubmitError values is turned true. Below the Login Button The error msg is displayed.
+
+* On Sucess scenerio the url path is changed from "/login" to "/" by the use of history.replace("/") method.
+
+* Now the Home Component will renderd automatically.
+
+* While entering the Home component, First the jwt token is optained by Cookies.get method. If the jwt token is not available then the url path changes to "/login" and return to the LoginForm Component. 
+
+* There is a heading named as Product Details above the table.
+
+* Ternary Operator is used to choose the render the Loader Component or Product Details Component. The variable isLoading is obtained from state. It was the deciding factor to render the component.Initial value is false.
+
+* Inside componentDidMount method the product details fetched from the url by using the "GET" method and jwt token.
+
+* Fetched data is altered to the frontend naming variables.The the data is stored in the state.
+
+* Then the Data was sending as a prop to the Table Component.
+
+* The Table Component returns the Table with values. Values obatined from the data feeded to the component.
+
+* Below the Table there was button named Add Product. It will also know as trigger button.It will trigger the Popup.
+
+* The Popup is having 5 input elemts and label. It was also used fetch the data from the user. {Brand,Title,price,imageUrl,Rating}
+
+* In the below part of Popup there was a close button is there to close the popup.
+
+* While clicking on the Submit button the data user entered is collected and formed a object named product details. The object was stringy by the use of JSON.stringify() method.
+
+* Then the "POST" Type HTTP request is send store the data and display in the table.
+
+* Inthe Below right corner there is Logout button is there. While clicking on that button the jwt token was cleared by the command Cookies.remove(). Then the Url path is also changed to "/login". Then the LoginForm renderd.
+
